@@ -3,6 +3,7 @@ packages:
   - 'verticals/*'
   - 'packages/*'
 allowBuilds:
+  esbuild: true
   unrs-resolver: true
 minimumReleaseAgeExclude:
   - '@sanity-labs/design-tokens@0.0.2-alpha.6'
