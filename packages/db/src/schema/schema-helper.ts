@@ -11,3 +11,21 @@ export const timestamps = {
     .defaultNow()
     .$onUpdate(() => new Date()),
 };
+
+export const contactStatus = t.pgEnum('contactStatus', [
+  'new',
+  'in_progress',
+  'spam',
+  'resolved',
+]);
+
+export const contactMessageStatus = t.pgEnum('contactMessageStatus', [
+  'sent',
+  'failed',
+  'pending',
+]);
+
+export const contactMessageDirection = t.pgEnum('contactMessageDirection', [
+  'inbound',
+  'outbound',
+]);
