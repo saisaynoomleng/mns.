@@ -8,6 +8,9 @@ dotenv.config({
 });
 
 const schema = z.object({
+  // Database
+  DATABASE_URL: z.url().startsWith('postgresql://'),
+
   // Auth
   BETTER_AUTH_SECRET: z
     .string()

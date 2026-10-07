@@ -13,4 +13,11 @@ export const relations = defineRelations(schema, (r) => ({
       to: r.AccountTable.userId,
     }),
   },
+
+  ContactTable: {
+    messages: r.many.ContactMessageTable({
+      from: r.ContactTable.id,
+      to: r.ContactMessageTable.contactId,
+    }),
+  },
 }));

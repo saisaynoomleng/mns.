@@ -1,3 +1,5 @@
+import 'dotenv/config';
+
 import { drizzle } from 'drizzle-orm/node-postgres';
 import { relations } from './relations.js';
 import { Pool } from 'pg';

@@ -1,6 +1,7 @@
 import type { InferInsertModel, InferSelectModel } from 'drizzle-orm';
 import * as t from 'drizzle-orm/pg-core';
 import { createInsertSchema, createSelectSchema } from 'drizzle-orm/zod';
+import { timestamps } from './schema-helper.js';
 
 export const VerificationTable = t.pgTable(
   'verifications',
@@ -9,6 +10,7 @@ export const VerificationTable = t.pgTable(
     identifier: t.text('identifier').notNull(),
     value: t.text('value').notNull(),
     expiresAt: t.timestamp('expires_at').notNull(),
+    ...timestamps,
   },
   (table) => [t.index('verifications_identifier_idx').on(table.identifier)],
 );

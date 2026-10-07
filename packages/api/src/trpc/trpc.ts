@@ -1,5 +1,5 @@
 import { initTRPC, TRPCError } from '@trpc/server';
-import type { Context } from './context.js';
+import { type Context } from './context.js';
 
 const t = initTRPC.context<Context>().create();
 
@@ -22,12 +22,12 @@ export const protectedProcedure = t.procedure.use(async ({ ctx, next }) => {
   });
 });
 
-// export const amdinProcedure = t.procedure.use(async ({ ctx, next }) => {
-//   if (!ctx.user.roles?.includes('admin')) {
-//     throw new TRPCError({
-//       code: 'FORBIDDEN',
-//     });
-//   }
+export const amdinProcedure = protectedProcedure.use(async ({ ctx, next }) => {
+  if (!ctx.user.roles.includes('admin')) {
+    throw new TRPCError({
+      code: 'FORBIDDEN',
+    });
+  }
 
-//   return next();
-// });
+  return next();
+});
