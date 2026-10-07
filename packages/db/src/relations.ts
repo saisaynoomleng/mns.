@@ -2,7 +2,15 @@ import { defineRelations } from 'drizzle-orm';
 import * as schema from './schema/index.js';
 
 export const relations = defineRelations(schema, (r) => ({
-  ContactTable: {},
+  UserTable: {
+    sessions: r.many.SessionTable({
+      from: r.UserTable.id,
+      to: r.SessionTable.userId,
+    }),
 
-  ContactMessageTable: {},
+    accounts: r.many.AccountTable({
+      from: r.UserTable.id,
+      to: r.AccountTable.userId,
+    }),
+  },
 }));
