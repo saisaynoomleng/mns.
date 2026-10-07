@@ -5,9 +5,11 @@ const DashboardLayout = ({ children }: LayoutProps<'/'>) => {
   return (
     <>
       <SidebarProvider>
-        <SidebarTrigger />
+        <AdminSidebar />
+
         <div>
-          <AdminSidebar />
+          <SidebarTrigger />
+
           {children}
         </div>
       </SidebarProvider>
