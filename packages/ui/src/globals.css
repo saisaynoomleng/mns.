@@ -1,5 +1,4 @@
 @import 'tailwindcss';
-
 @import 'tw-animate-css';
 @import 'shadcn/tailwind.css';
 @plugin '@tailwindcss/typography';
@@ -215,5 +214,16 @@
   }
   body {
     @apply bg-background text-foreground text-fs-400 font-body leading-normal tracking-normal overflow-x-hidden;
+  }
+  h1,
+  h2,
+  h3,
+  h4,
+  h5,
+  h6 {
+    @apply leading-none text-balance;
+  }
+  p {
+    @apply text-pretty;
   }
 }

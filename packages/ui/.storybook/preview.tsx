@@ -1,11 +1,13 @@
 import type { Preview } from '@storybook/react-vite';
 
-import '../src/globals.css';
-import './fonts.css';
-
 import '@fontsource/fraunces';
 import '@fontsource/nothing-you-could-do';
 import '@fontsource/sora';
+
+import '../src/globals.css';
+import './fonts.css';
+
+import { Toaster } from '../src/components';
 
 const preview: Preview = {
   parameters: {
@@ -27,6 +29,8 @@ const preview: Preview = {
     (Story) => (
       <>
         <Story />
+
+        <Toaster richColors closeButton position="bottom-center" />
       </>
     ),
   ],
