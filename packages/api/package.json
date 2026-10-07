@@ -5,30 +5,37 @@
   "type": "module",
   "types": "./dist/index.d.ts",
   "scripts": {
-    "dev": "tsx ./src/server.ts",
+    "dev": "tsx watch ./src/server.ts",
     "build": "tsc -p tsconfig.build.json",
     "test": "vitest run",
     "test:watch": "vitest",
-    "test:coverage": "vitest run --coverage"
+    "test:coverage": "vitest run --coverage",
+    "db:generate": "drizzle-kit generate",
+    "db:migrate": "drizzle-kit migrate",
+    "db:push": "drizzle-kit push",
+    "db:seed": "tsx ./src/seed.ts",
+    "db:studio": "drizzle-kit studio"
   },
   "exports": {
     ".": {
       "import": "./dist/index.js",
       "types": "./dist/index.d.ts"
-    }
+    },
+    "./types": "./src/lib/types.ts"
   },
   "dependencies": {
     "@epic-web/remember": "^1.1.0",
-    "@mns/db": "workspace:*",
     "@mns/utils": "workspace:*",
     "@trpc/server": "^11.19.0",
     "better-auth": "^1.7.7",
     "cors": "^2.8.6",
     "cross-env": "^10.1.0",
     "dotenv": "^18.0.5",
+    "drizzle-orm": "1.0.0-rc.4",
     "express": "^5.2.1",
     "helmet": "^8.3.0",
     "morgan": "^1.12.1",
+    "pg": "^8.23.1",
     "supertest": "^7.3.1",
     "zod": "^4.6.5"
   },
@@ -38,6 +45,8 @@
     "@types/helmet": "^4.0.0",
     "@types/morgan": "^1.9.10",
     "@types/node": "^26.6.4",
+    "@types/pg": "^8.23.1",
+    "drizzle-kit": "1.0.0-rc.4",
     "tsx": "^4.23.15",
     "typescript": "5.9.3",
     "vitest": "^5.0.3"

@@ -8,6 +8,7 @@ import { auth } from './lib/auth.js';
 import { createExpressMiddleware } from '@trpc/server/adapters/express';
 import { appRouter } from './trpc/router.js';
 import { createContext } from './trpc/context.js';
+import { errorHandler } from './middlewares/errorHandler.js';
 
 const app = express();
 
@@ -45,5 +46,7 @@ app.use(
     createContext: ({ req }) => createContext(req),
   }),
 );
+
+app.use(errorHandler);
 
 export default app;

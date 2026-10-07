@@ -10,6 +10,7 @@ dotenv.config({
 const schema = z.object({
   // Database
   DATABASE_URL: z.url().startsWith('postgresql://'),
+  DATABASE_POOL_MAX: z.coerce.number().default(20),
 
   // Auth
   BETTER_AUTH_SECRET: z
