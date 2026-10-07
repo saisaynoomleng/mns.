@@ -1,8 +1,8 @@
-import { contactRouter } from '../routers/contacts.router.js';
+import { newsletterRouter } from '../modules/newsletters/newsletter.router.js';
 import { router } from './trpc.js';
 
 export const appRouter = router({
-  contact: contactRouter,
+  newsletter: newsletterRouter,
 });
 
 export type AppRouter = typeof appRouter;

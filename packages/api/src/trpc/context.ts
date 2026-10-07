@@ -2,7 +2,7 @@ import type { Request } from 'express';
 import { auth } from '../lib/auth.js';
 import { fromNodeHeaders } from 'better-auth/node';
 
-export async function createContext(req: Request) {
+export const createContext = async (req: Request) => {
   const session = await auth.api.getSession({
     headers: fromNodeHeaders(req.headers),
   });
@@ -16,6 +16,6 @@ export async function createContext(req: Request) {
         }
       : null,
   };
-}
+};
 
-export type Context = Awaited<ReturnType<typeof createContext>>;
+export type trpcContext = Awaited<ReturnType<typeof createContext>>;
