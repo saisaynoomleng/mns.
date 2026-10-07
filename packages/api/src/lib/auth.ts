@@ -1,28 +1,86 @@
-import db from '@mns/db';
+import db, {
+  AccountTable,
+  RateLimitTable,
+  SessionTable,
+  UserTable,
+  VerificationTable,
+} from '@mns/db';
 import { betterAuth } from 'better-auth';
 import { drizzleAdapter } from 'better-auth/adapters/drizzle';
 import { nextCookies } from 'better-auth/next-js';
 import { admin, emailOTP } from 'better-auth/plugins';
+import env from './env.js';
 
 export const auth = betterAuth({
   plugins: [
     admin(),
     emailOTP({
       expiresIn: 60 * 5,
-      async sendVerificationOTP({ email, otp, type }) {},
+      async sendVerificationOTP({ email, otp, type }) {
+        if (type === 'change-email') {
+          // change email
+        }
+        if (type === 'forget-password') {
+          // forget password
+        }
+      },
+      disableSignUp: true,
     }),
     nextCookies(),
   ],
 
-  appName: 'mns.',
+  appName: env.APP_NAME,
 
-  baseURL: '',
+  baseURL: env.BETTER_AUTH_URL,
 
-  trustedOrigins: [],
+  trustedOrigins: [
+    'localhost:3000',
+    'localhost:3001',
+    'localhost:4000',
+    '*.mnsart.com',
+  ],
 
-  basePath: '',
+  basePath: '/api/auth',
 
-  secret: '',
+  secret: env.BETTER_AUTH_SECRET,
+
+  database: drizzleAdapter(db, {
+    provider: 'pg',
+    schema: {
+      users: UserTable,
+      sessions: SessionTable,
+      accounts: AccountTable,
+      verifications: VerificationTable,
+      rateLimits: RateLimitTable,
+    },
+  }),
+
+  emailVerification: {
+    sendVerificationEmail: async ({ user, url, token }) => {
+      //  sign up verification
+    },
+    sendOnSignUp: true,
+    autoSignInAfterVerification: true,
+    expiresIn: 60 * 5,
+  },
+
+  emailAndPassword: {
+    enabled: true,
+    requireEmailVerification: true,
+    minPasswordLength: 8,
+    maxPasswordLength: 128,
+    autoSignIn: true,
+    onExistingUserSignUp: async ({ user }) => {
+      // alert email
+    },
+  },
+
+  socialProviders: {
+    google: {
+      clientId: env.GOOGLE_CLIENT_ID,
+      clientSecret: env.GOOGLE_CLIENT_SECRET,
+    },
+  },
 
   user: {
     modelName: 'users',
@@ -42,12 +100,9 @@ export const auth = betterAuth({
         type: 'string',
       },
     },
-
-    changeEmail: {
-      enabled: true,
-    },
     deleteUser: {
       enabled: true,
+      sendDeleteAccountVerification: async ({ user, url }) => {},
     },
   },
 
@@ -56,11 +111,11 @@ export const auth = betterAuth({
     fields: {
       userId: 'userId',
     },
-    expiresIn: 60 * 5,
-    updateAge: 60 * 60 * 24,
+    expiresIn: env.SESSION_EXPIRES_IN,
+    updateAge: env.SESSION_UPDATE_AGE,
     cookieCache: {
       enabled: true,
-      maxAge: 60 * 5,
+      maxAge: env.SESSION_COOKIE_CACHE_MAX_AGE,
     },
   },
 
@@ -69,27 +124,42 @@ export const auth = betterAuth({
     fields: {
       userId: 'userId',
     },
+    encryptOAuthTokens: true,
+    storeStateStrategy: 'database',
+    storeAccountCookie: true,
+    accountLinking: {
+      enabled: true,
+      trustedProviders: ['google', 'email-password', 'linkedin', 'tiktok'],
+      allowDifferentEmails: false,
+    },
   },
 
   verification: {
     modelName: 'verifications',
+    disableCleanup: false,
+    storeIdentifier: 'hashed',
+    storeInDatabase: true,
   },
 
   rateLimit: {
     modelName: 'rateLimits',
     enabled: true,
-    window: 900,
-    max: 10,
+    window: env.RATE_LIMIT_WINDOW,
+    max: env.RATE_LIMIT_MAX_REQUESTS,
     storage: 'database',
   },
-
-  database: drizzleAdapter(db, {
-    provider: 'pg',
-  }),
 
   advanced: {
     database: {
       generateId: 'uuid',
     },
+    ...(env.NODE_ENV === 'production'
+      ? {
+          crossSubDomainCookies: {
+            enabled: true,
+            domain: '.mnsart.com',
+          },
+        }
+      : {}),
   },
 });
