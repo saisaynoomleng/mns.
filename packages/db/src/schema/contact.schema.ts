@@ -9,7 +9,7 @@ export const ContactTable = t.pgTable(
     id: t.uuid('id').primaryKey().defaultRandom(),
     name: t.varchar('name', { length: 255 }).notNull(),
     email: t.varchar('email', { length: 255 }).notNull(),
-    message: t.text('message'),
+    message: t.text('message').notNull(),
     companyName: t.varchar('company_name', { length: 255 }),
     position: t.varchar('position', { length: 255 }),
     minBudget: t.integer('min_budget').notNull(),
