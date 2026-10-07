@@ -1,0 +1,14 @@
+import { Meta, ColorPalette, ColorItem } from '@storybook/addon-docs/blocks';
+import { colors } from '../lib/colors';
+import { toTitleCase } from '@mns/utils';
+
+<Meta title="DesignSystem/Colors" />
+
+<ColorPalette>
+  <ColorItem title="Black" colors={{ hex: '#070707' }} />
+
+{Object.entries(colors).map(([title, colors], i) => (
+<ColorItem key={i} title={toTitleCase(title)} colors={colors} />
+))}
+
+</ColorPalette>

@@ -1,8 +1,8 @@
 import type { Preview } from '@storybook/react-vite';
 
-import '@fontsource/fraunces';
+import '@fontsource-variable/fraunces';
 import '@fontsource/nothing-you-could-do';
-import '@fontsource/sora';
+import '@fontsource-variable/sora';
 
 import '../src/globals.css';
 import './fonts.css';
