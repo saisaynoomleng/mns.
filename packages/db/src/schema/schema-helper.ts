@@ -29,3 +29,5 @@ export const contactMessageDirection = t.pgEnum('contactMessageDirection', [
   'inbound',
   'outbound',
 ]);
+
+export const userRole = t.pgEnum('userRole', ['admin', 'super_admin', 'user']);
