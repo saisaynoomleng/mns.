@@ -23,6 +23,6 @@ const config: StorybookConfig = {
     getAbsolutePath('@storybook/addon-docs'),
   ],
   framework: getAbsolutePath('@storybook/react-vite'),
-  viteFinal: (config) => mergeConfig(config, { plugin: [tailwindcss()] }),
+  viteFinal: (config) => mergeConfig(config, { plugins: [tailwindcss()] }),
 };
 export default config;
