@@ -1,4 +1,9 @@
 export const colors = {
+  white: {
+    '100': '#fbf6f1',
+    '200': '#f6eade',
+    '300': '#c77548',
+  },
   primary: {
     '50': '#fff1f3',
     '100': '#fee5e9',
