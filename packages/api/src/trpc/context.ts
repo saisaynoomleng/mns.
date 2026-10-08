@@ -18,4 +18,4 @@ export const createContext = async (req: Request) => {
   };
 };
 
-export type trpcContext = Awaited<ReturnType<typeof createContext>>;
+export type TrpcContext = Awaited<ReturnType<typeof createContext>>;

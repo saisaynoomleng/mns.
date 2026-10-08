@@ -1,4 +1,4 @@
-import express from 'express';
+import express, { type Express } from 'express';
 import helmet from 'helmet';
 import cors from 'cors';
 import morgan from 'morgan';
@@ -10,7 +10,7 @@ import { appRouter } from './trpc/router.js';
 import { createContext } from './trpc/context.js';
 import { errorHandler } from './middlewares/errorHandler.js';
 
-const app = express();
+const app: Express = express();
 
 // security and cors
 app.use(helmet());
