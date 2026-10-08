@@ -1,7 +1,7 @@
 import { initTRPC, TRPCError } from '@trpc/server';
-import type { trpcContext } from './context.js';
+import type { TrpcContext } from './context.js';
 
-const t = initTRPC.context<trpcContext>().create();
+const t = initTRPC.context<TrpcContext>().create();
 
 export const router = t.router;
 export const publicProcedure = t.procedure;
