@@ -5,10 +5,10 @@ import morgan from 'morgan';
 import { isTest } from 'better-auth';
 import { toNodeHandler } from 'better-auth/node';
 import { auth } from './lib/auth.js';
-import { createExpressMiddleware } from '@trpc/server/adapters/express';
 import { appRouter } from './trpc/router.js';
 import { createContext } from './trpc/context.js';
 import { errorHandler } from './middlewares/errorHandler.js';
+import { createExpressMiddleware } from '@trpc/server/adapters/express';
 
 const app: Express = express();
 
