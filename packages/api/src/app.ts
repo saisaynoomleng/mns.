@@ -13,7 +13,6 @@ import { errorHandler } from './middlewares/errorHandler.js';
 const app: Express = express();
 
 // security and cors
-app.use(helmet());
 app.use(
   cors({
     origin: env.ALLOWED_ORIGINS.split(','),
@@ -21,7 +20,9 @@ app.use(
   }),
 );
 // better auth
-app.use('/api/auth/{*any}', toNodeHandler(auth));
+app.all('/api/auth/{*any}', toNodeHandler(auth));
+
+app.use(helmet());
 app.use(
   morgan('dev', {
     skip: () => isTest(),

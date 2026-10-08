@@ -53,6 +53,15 @@ export const EmailFooter = () => {
           United States
         </Text>
       </Section>
+
+      <Section>
+        <Link
+          href="https://mnsart.com"
+          className="font-semibold underline decoration-wavy underline-offset-4 text-primary-400 text-base"
+        >
+          Visit our website by clicking this link
+        </Link>
+      </Section>
     </Section>
   );
 };

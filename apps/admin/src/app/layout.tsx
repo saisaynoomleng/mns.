@@ -20,8 +20,8 @@ const nothingYouCanDo = Nothing_You_Could_Do({
 
 export const metadata: Metadata = {
   title: {
-    template: '%s | mns. admin',
-    default: 'mns. admin',
+    template: '%s | mns',
+    default: 'mns',
   },
   description: 'mns. admin app for controlling and managing the mns. web app',
 };

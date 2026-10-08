@@ -1,5 +1,5 @@
 import { SendEmailCommand } from '@aws-sdk/client-ses';
-import { emailClinet } from '../../lib/emailClient.js';
+import { emailClient } from '../../lib/emailClient.js';
 import type { CreateNewsletterType } from '../../lib/types.js';
 import { newsletterRepository } from './newsletter.repository.js';
 import env from '../../lib/env.js';
@@ -14,7 +14,7 @@ export const newsletterService = () => {
 
       const html = await renderNewsletterEmail({ email });
 
-      emailClinet.send(
+      await emailClient.send(
         new SendEmailCommand({
           Source: env.NO_REPLY_EMAIL,
 
@@ -24,7 +24,7 @@ export const newsletterService = () => {
 
           Message: {
             Subject: {
-              Data: `You’re subscribed`,
+              Data: `You’re subscribed!`,
               Charset: 'utf-8',
             },
 
