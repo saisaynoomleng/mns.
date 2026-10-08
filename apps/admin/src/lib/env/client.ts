@@ -7,6 +7,6 @@ export const env = createEnv({
     NEXT_PUBLIC_API_URL: z.url({ error: 'Must be a valid URL' }),
   },
   runtimeEnv: {
-    NEXT_PUBLIC_API_URL: process.env.API_URL,
+    NEXT_PUBLIC_API_URL: process.env.NEXT_PUBLIC_API_URL,
   },
 });
