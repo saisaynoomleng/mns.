@@ -25,6 +25,7 @@
     "./types": "./src/lib/types.ts"
   },
   "dependencies": {
+    "@aws-sdk/client-ses": "^3.1147.0",
     "@epic-web/remember": "^1.1.0",
     "@mns/utils": "workspace:*",
     "better-auth": "^1.7.7",
