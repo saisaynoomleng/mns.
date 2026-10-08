@@ -60,7 +60,7 @@ export const SignUpForm = ({
   const { isSubmitting } = form.formState;
 
   return (
-    <Card className="md:min-w-100">
+    <Card className={twMerge(clsx(''), className)}>
       <CardHeader className="text-center">
         <CardTitle className="font-semibold">Sign Up</CardTitle>
         <CardDescription>Welcome to mns.</CardDescription>
@@ -69,7 +69,7 @@ export const SignUpForm = ({
       <CardContent>
         <form
           noValidate
-          className={twMerge(clsx('generic-form', className))}
+          className={twMerge(clsx('generic-form'))}
           onSubmit={form.handleSubmit(onSubmit)}
         >
           <OAuthSignIn action={oAuthAction} />
