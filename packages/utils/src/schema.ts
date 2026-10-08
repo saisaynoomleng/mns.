@@ -7,6 +7,7 @@ export const emailSchema = z
 
 export const passwordSchema = z
   .string()
+  .min(1, { error: 'Password is required' })
   .refine((p) => passwordRules.every((r) => r.test(p)), {
     error: 'Password requirements not meet',
     path: ['password'],
@@ -44,3 +45,10 @@ export const SignUpEmailFormSchema = z.object({
   password: passwordSchema,
 });
 export type SignUpEmailType = z.infer<typeof SignUpEmailFormSchema>;
+
+export const SignInEmailFormSchema = z.object({
+  email: emailSchema,
+  password: passwordSchema,
+  rememberMe: z.boolean().default(false),
+});
+export type SignInEmailType = z.input<typeof SignInEmailFormSchema>;
