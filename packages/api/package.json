@@ -27,7 +27,6 @@
   "dependencies": {
     "@epic-web/remember": "^1.1.0",
     "@mns/utils": "workspace:*",
-    "@trpc/server": "^11.19.0",
     "better-auth": "^1.7.7",
     "cors": "^2.8.6",
     "cross-env": "^10.1.0",
