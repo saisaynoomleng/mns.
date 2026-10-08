@@ -10,6 +10,7 @@ import { drizzleAdapter } from 'better-auth/adapters/drizzle';
 import { nextCookies } from 'better-auth/next-js';
 import { admin, emailOTP } from 'better-auth/plugins';
 import env from './env.js';
+import { sendSignUpVerificationEmail } from '../modules/auth/sign-up-verification.js';
 
 export const auth = betterAuth({
   plugins: [
@@ -34,9 +35,9 @@ export const auth = betterAuth({
   baseURL: env.BETTER_AUTH_URL,
 
   trustedOrigins: [
-    'localhost:3000',
-    'localhost:3001',
-    'localhost:4000',
+    'http://localhost:3000',
+    'http://localhost:3001',
+    'http://localhost:4000',
     '*.mnsart.com',
   ],
 
@@ -57,11 +58,16 @@ export const auth = betterAuth({
 
   emailVerification: {
     sendVerificationEmail: async ({ user, url, token }) => {
-      //  sign up verification
+      void sendSignUpVerificationEmail({
+        name: user.name,
+        email: user.email,
+        url,
+        expiresAt: 15,
+      });
     },
     sendOnSignUp: true,
     autoSignInAfterVerification: true,
-    expiresIn: 60 * 5,
+    expiresIn: 60 * 15,
   },
 
   emailAndPassword: {

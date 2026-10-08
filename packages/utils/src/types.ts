@@ -29,3 +29,13 @@ export type ChatProps = {
   inbound: string;
   outbound: string;
 };
+
+// ---------------------------- //
+// Emails                       //
+// ---------------------------- //
+export type SignUpVerificationProps = {
+  name: string;
+  email: string;
+  url: string;
+  expiresAt?: number;
+};

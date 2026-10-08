@@ -19,6 +19,17 @@ export const errorHandler = (
   let status = error.status ?? 500;
   let message = error.message ?? 'Internal server error';
 
+  // Handle specific error types
+  if (error.name === 'ValidationError') {
+    status = 400;
+    message = 'Validation Error';
+  }
+
+  if (error.name === 'UnauthorizedError') {
+    status = 401;
+    message = 'Unauthorized';
+  }
+
   if (error.code === '23505') {
     status = 409;
     message = 'Resource already exists';
