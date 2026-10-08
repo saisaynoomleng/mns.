@@ -3,3 +3,4 @@ export * from './button';
 export * from './sonner';
 export * from './sidebar';
 export * from './checkbox';
+export * from './spinner';

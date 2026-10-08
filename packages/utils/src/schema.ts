@@ -34,3 +34,13 @@ export const CreateContactSchema = z
     error: 'Maximum budget is lower than maximum budget',
     path: ['maxBudget'],
   });
+
+//===================================//
+//Form                               //
+//===================================//
+export const SignUpEmailFormSchema = z.object({
+  name: z.string().min(1, { error: 'Name is required' }),
+  email: emailSchema,
+  password: passwordSchema,
+});
+export type SignUpEmailType = z.infer<typeof SignUpEmailFormSchema>;
