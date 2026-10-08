@@ -1,0 +1,29 @@
+{
+  "name": "@mns/email",
+  "version": "1.0.0",
+  "private": true,
+  "type": "module",
+  "types": "./dist/index.d.ts",
+  "scripts": {
+    "dev": "email dev -d ./src/emails -p 6001",
+    "build": "tsc -p tsconfig.build.json",
+    "clean": "rm -rf ./dist"
+  },
+  "dependencies": {
+    "react": "^19.3.0",
+    "react-dom": "^19.3.0",
+    "react-email": "6.11.1"
+  },
+  "devDependencies": {
+    "@react-email/ui": "6.11.1",
+    "@types/react": "^19.3.0",
+    "@types/react-dom": "^19.3.0",
+    "typescript": "5.9.3"
+  },
+  "exports": {
+    ".": {
+      "import": "./dist/index.js",
+      "types": "./dist/index.d.ts"
+    }
+  }
+}
