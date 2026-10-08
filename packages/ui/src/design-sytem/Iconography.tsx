@@ -1,3 +1,4 @@
+import { LiaSignOutAltSolid } from 'react-icons/lia';
 import { FaPaperPlane } from 'react-icons/fa';
 import {
   FaGoogle,
