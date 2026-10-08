@@ -2,3 +2,4 @@ export * from './input';
 export * from './button';
 export * from './sonner';
 export * from './sidebar';
+export * from './checkbox';
