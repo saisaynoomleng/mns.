@@ -12,4 +12,6 @@ router.post(
   controller.createNewsletter,
 );
 
+// router.get('/', controller.)
+
 export default router;
