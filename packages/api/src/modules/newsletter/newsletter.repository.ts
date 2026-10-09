@@ -1,4 +1,5 @@
-import db, { NewsletterTable } from '../../db/index.js';
+import db from '../../db/index.js';
+import { NewsletterTable } from '../../db/schema/index.js';
 import type { CreateNewsletterType } from '../../lib/types.js';
 
 export const newsletterRepository = () => {
@@ -10,6 +11,18 @@ export const newsletterRepository = () => {
           email,
         })
         .returning();
+
+      return data;
+    },
+
+    findAllNewsletters: async () => {
+      const data = await db.query.NewsletterTable.findMany({
+        columns: {
+          email: true,
+          createdAt: true,
+          id: true,
+        },
+      });
 
       return data;
     },

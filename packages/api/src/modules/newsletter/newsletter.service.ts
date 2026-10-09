@@ -42,5 +42,11 @@ export const newsletterService = () => {
         }),
       );
     },
+
+    getAllNewsletters: async () => {
+      const data = await repository.findAllNewsletters();
+
+      return data;
+    },
   };
 };
