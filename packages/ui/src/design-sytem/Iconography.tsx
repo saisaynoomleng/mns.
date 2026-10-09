@@ -10,3 +10,4 @@ import {
 import { IoCheckmark } from 'react-icons/io5';
 import { BsDash } from 'react-icons/bs';
 import { MdAddIcCall } from 'react-icons/md';
+import { FaMagnifyingGlass } from 'react-icons/fa6';
