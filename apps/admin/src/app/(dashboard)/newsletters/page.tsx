@@ -3,7 +3,6 @@
 import { useGetAllNewsletter } from '@/hooks/useNewsletter';
 import {
   Bounded,
-  Input,
   InputGroup,
   InputGroupAddon,
   InputGroupInput,

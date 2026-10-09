@@ -60,3 +60,17 @@ export const SignInEmailFormSchema = z.object({
   rememberMe: z.boolean().default(false),
 });
 export type SignInEmailType = z.input<typeof SignInEmailFormSchema>;
+
+//===================================//
+//Admin Forms                        //
+//===================================//
+export const SendNewsletterEmailFormSchema = z.object({
+  subject: z.string().min(1, { error: 'Subject is required!' }),
+  message: z
+    .string()
+    .min(10, { error: 'Message must have at least 10 characters' })
+    .max(10000, { error: 'Message cannot exceed 10,000 characters' }),
+});
+export type SendNewsletterEmailFormInput = z.input<
+  typeof SendNewsletterEmailFormSchema
+>;
