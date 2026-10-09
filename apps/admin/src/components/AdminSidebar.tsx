@@ -19,12 +19,13 @@ import Link from 'next/link';
 import clsx from 'clsx';
 import { usePathname } from 'next/navigation';
 
-import { GiContract, GiNewspaper } from 'react-icons/gi';
 import { SignOutButton } from './SignOutButton';
+import { FaNewspaper } from 'react-icons/fa';
+import { MdAddIcCall } from 'react-icons/md';
 
 const MARKETING_LINKS = [
-  { label: 'Newsletter', href: '/newsletters', icon: <GiNewspaper /> },
-  { label: 'Contacts', href: '/contacts', icon: <GiContract /> },
+  { label: 'Newsletter', href: '/newsletters', icon: <FaNewspaper /> },
+  { label: 'Contacts', href: '/contacts', icon: <MdAddIcCall /> },
 ];
 
 const AdminSidebar = () => {
