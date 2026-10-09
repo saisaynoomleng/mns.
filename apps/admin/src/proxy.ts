@@ -1,7 +1,7 @@
 import { getSessionCookie } from 'better-auth/cookies';
 import { NextRequest, NextResponse } from 'next/server';
 import { env } from './lib/env/server';
-import type { BetterAuthSessionProps } from '@mns/api';
+import { BetterAuthSessionProps } from './lib/types';
 
 const publicRoutes = ['/sign-in', '/not-authorized'];
 

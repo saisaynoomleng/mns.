@@ -38,13 +38,18 @@ export const NewsletterController = () => {
       }
     },
 
-    getAllNewsletter: async (
+    getAllNewsletters: async (
       req: Request,
       res: Response,
       next: NextFunction,
     ) => {
       try {
-      } catch (error) {}
+        const data = await service.getAllNewsletters();
+
+        return res.status(200).json(data);
+      } catch (error) {
+        return res.status(500).json({ message: 'Internal server error' });
+      }
     },
   };
 };

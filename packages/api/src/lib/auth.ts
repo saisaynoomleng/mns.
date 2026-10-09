@@ -1,16 +1,17 @@
-import db, {
+import {
   AccountTable,
   RateLimitTable,
   SessionTable,
   UserTable,
   VerificationTable,
-} from '../db/index.js';
+} from '../db/schema/index.js';
 import { betterAuth } from 'better-auth';
 import { drizzleAdapter } from 'better-auth/adapters/drizzle';
 import { nextCookies } from 'better-auth/next-js';
 import { admin, emailOTP } from 'better-auth/plugins';
 import env from './env.js';
 import { sendSignUpVerificationEmail } from '../modules/auth/sign-up-verification.js';
+import db from '../db/index.js';
 
 export const auth = betterAuth({
   plugins: [

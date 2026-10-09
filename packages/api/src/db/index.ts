@@ -28,5 +28,3 @@ if (isProd()) {
 
 const db = drizzle({ client, relations, logger: isTest() ? false : true });
 export default db;
-
-export * from './schema/index.js';
