@@ -15,6 +15,7 @@ export async function proxy(req: NextRequest) {
   const sessionCookie = getSessionCookie(req);
 
   if (!sessionCookie) {
+    console.log('[proxy] REDIRECT: no session cookie');
     return NextResponse.redirect(new URL('/sign-in', req.url));
   }
 
@@ -22,26 +23,21 @@ export async function proxy(req: NextRequest) {
     headers: {
       Cookie: req.headers.get('cookie') ?? '',
     },
+    cache: 'no-store',
   });
 
+  console.log('[proxy] get-session status:', response.status);
+
   if (!response.ok) {
+    console.log('[proxy] REDIRECT: get-session failed');
     return NextResponse.redirect(new URL('/sign-in', req.url));
   }
 
   const sessions: BetterAuthSessionProps = await response.json();
 
   if (!sessions?.user) {
+    console.log('[proxy] REDIRECT: session has no user');
     return NextResponse.redirect(new URL('/sign-in', req.url));
-  }
-
-  const roles = sessions.user.role?.split(',').map((r) => r.trim());
-
-  const authenticated = roles?.some((r) =>
-    ['admin', 'super_admin'].includes(r),
-  );
-
-  if (!authenticated) {
-    return NextResponse.redirect(new URL('/not-authorized', req.url));
   }
 
   return NextResponse.next();
