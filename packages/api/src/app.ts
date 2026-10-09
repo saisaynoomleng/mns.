@@ -39,7 +39,7 @@ app.get('/health-check', (req, res) => {
 });
 
 // routes
-app.use('/api/newsletter', NewsletterRouter);
+app.use('/api/newsletters', NewsletterRouter);
 
 // error handler
 app.use(errorHandler);

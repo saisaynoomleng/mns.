@@ -12,6 +12,10 @@ export const newsletterService = () => {
     create: async ({ email }: CreateNewsletterType) => {
       const data = await repository.insertNewsletter({ email });
 
+      return data;
+    },
+
+    sendSubscribedEmail: async ({ email }: CreateNewsletterType) => {
       const html = await renderNewsletterEmail({ email });
 
       await emailClient.send(
@@ -24,20 +28,19 @@ export const newsletterService = () => {
 
           Message: {
             Subject: {
-              Data: `You’re subscribed!`,
+              Data: 'You’re subscribed!',
               Charset: 'utf-8',
             },
 
             Body: {
               Html: {
                 Data: html,
+                Charset: 'utf-8',
               },
             },
           },
         }),
       );
-
-      return data;
     },
   };
 };

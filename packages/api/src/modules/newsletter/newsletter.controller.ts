@@ -14,7 +14,13 @@ export const NewsletterController = () => {
     ) => {
       try {
         const { email } = req.body;
-        await service.create({ email });
+        const data = await service.create({ email });
+
+        if (!data) {
+          return res.status(500).json({ message: 'Internal server error' });
+        }
+
+        await service.sendSubscribedEmail({ email: data.email });
 
         return res.status(201).json({
           message: 'Thank you for your subscription!',
