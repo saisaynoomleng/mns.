@@ -4,3 +4,7 @@ export * from './sonner';
 export * from './sidebar';
 export * from './checkbox';
 export * from './spinner';
+export * from './table';
+export * from './skeleton';
+export * from './dropdown-menu';
+export * from './input-group';
