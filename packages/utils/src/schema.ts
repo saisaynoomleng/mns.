@@ -39,6 +39,14 @@ export const CreateContactSchema = z
 //===================================//
 //Form                               //
 //===================================//
+export const NewsletterFormSchema = z.object({
+  email: emailSchema,
+});
+export type NewsletterFormInputType = z.input<typeof NewsletterFormSchema>;
+
+//===================================//
+//Better Auth Form                   //
+//===================================//
 export const SignUpEmailFormSchema = z.object({
   name: z.string().min(1, { error: 'Name is required' }),
   email: emailSchema,

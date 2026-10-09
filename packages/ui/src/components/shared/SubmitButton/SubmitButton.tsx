@@ -18,7 +18,7 @@ export const SubmitButton = ({
     <Button
       type="submit"
       className={twMerge(
-        clsx('group overflow-hidden text-background!', className),
+        clsx('group overflow-hidden text-background! w-fit', className),
       )}
     >
       <span>

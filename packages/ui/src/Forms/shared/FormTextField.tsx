@@ -54,8 +54,10 @@ export const FormTextField = <T extends FieldValues>({
       name={name}
       control={control}
       render={({ field, fieldState }) => (
-        <Field aria-invalid={fieldState.invalid}>
-          <FieldLabel htmlFor={id}>{label}</FieldLabel>
+        <Field>
+          <FieldLabel htmlFor={id} aria-invalid={fieldState.invalid}>
+            {label}
+          </FieldLabel>
           {description && <FieldDescription>{description}</FieldDescription>}
 
           <Input

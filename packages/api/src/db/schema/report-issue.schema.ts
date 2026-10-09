@@ -18,6 +18,7 @@ export const ReportIssueTable = t.pgTable(
       .references(() => AppTable.id, { onDelete: 'cascade' })
       .notNull(),
     body: t.text('body').notNull(),
+    imageUrl: t.varchar('image_url', { length: 255 }),
     status: reportIssueStatus('status').notNull().default('new'),
     ...timestamps,
   },
