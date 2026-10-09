@@ -5,8 +5,10 @@ export const env = createEnv({
   emptyStringAsUndefined: true,
   client: {
     NEXT_PUBLIC_API_URL: z.url({ error: 'Must be a valid URL' }),
+    NEXT_PUBLIC_APP_URL: z.url({ error: 'Must be a valid URL' }),
   },
   runtimeEnv: {
     NEXT_PUBLIC_API_URL: process.env.NEXT_PUBLIC_API_URL,
+    NEXT_PUBLIC_APP_URL: process.env.NEXT_PUBLIC_APP_URL,
   },
 });

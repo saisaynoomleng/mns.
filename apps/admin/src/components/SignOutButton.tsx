@@ -1,6 +1,6 @@
 'use client';
 
-import { authClient } from '@/lib/auth-client';
+import { authClient } from '@/lib/authClient';
 import { Button, useSidebar } from '@mns/ui';
 import { useRouter } from 'next/navigation';
 import { LiaSignOutAltSolid } from 'react-icons/lia';
