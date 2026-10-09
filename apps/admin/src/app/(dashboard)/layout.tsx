@@ -1,6 +1,7 @@
+import { AdminHeader } from '@/components/AdminHeader';
 import AdminSidebar from '@/components/AdminSidebar';
 import { QueryProvider } from '@/components/QueryProvider';
-import { SidebarProvider, SidebarTrigger } from '@mns/ui';
+import { SidebarProvider } from '@mns/ui';
 
 const DashboardLayout = ({ children }: LayoutProps<'/'>) => {
   return (
@@ -8,9 +9,8 @@ const DashboardLayout = ({ children }: LayoutProps<'/'>) => {
       <SidebarProvider>
         <AdminSidebar />
 
-        <div>
-          <SidebarTrigger />
-
+        <div className="w-full p-4">
+          <AdminHeader />
           {children}
         </div>
       </SidebarProvider>
