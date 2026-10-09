@@ -48,7 +48,7 @@ export type SignUpEmailType = z.infer<typeof SignUpEmailFormSchema>;
 
 export const SignInEmailFormSchema = z.object({
   email: emailSchema,
-  password: passwordSchema,
+  password: z.string().min(1, { error: 'Password is required' }),
   rememberMe: z.boolean().default(false),
 });
 export type SignInEmailType = z.input<typeof SignInEmailFormSchema>;

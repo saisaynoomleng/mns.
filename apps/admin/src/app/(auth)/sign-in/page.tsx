@@ -17,11 +17,11 @@ const SignInPage = (): React.JSX.Element => {
         email: data.email,
         password: data.password,
         rememberMe: data.rememberMe,
-        callbackURL: `${env.NEXT_PUBLIC_APP_URL}/user`,
+        callbackURL: `${env.NEXT_PUBLIC_APP_URL}`,
       },
       {
         onSuccess: () => {
-          router.push('/user');
+          router.push('/');
         },
 
         onError: (ctx) => {
@@ -49,7 +49,11 @@ const SignInPage = (): React.JSX.Element => {
   };
 
   return (
-    <Bounded size="sm" isCentered>
+    <Bounded
+      size="sm"
+      isCentered
+      className="flex flex-col justify-center items-center"
+    >
       <SignInForm
         action={handleSignIn}
         oAuthAction={handleOAuthSignIn}

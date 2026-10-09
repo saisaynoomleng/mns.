@@ -1,6 +1,8 @@
 'use client';
 
+import { SignOutButton } from '@/components/SignOutButton';
 import { authClient } from '@/lib/authClient';
+import { Bounded } from '@mns/ui';
 import { useRouter } from 'next/navigation';
 import { useEffect } from 'react';
 
@@ -18,7 +20,11 @@ const UserPage = () => {
     return <div>Loading...</div>;
   }
 
-  return <div>UserPage</div>;
+  return (
+    <Bounded>
+      <SignOutButton />
+    </Bounded>
+  );
 };
 
 export default UserPage;

@@ -3,7 +3,7 @@ import { NewsletterController } from './newsletter.controller.js';
 import { ValidateSchemaBody } from '../../middlewares/validations.js';
 import { CreateNewsletterSchema } from '../../lib/types.js';
 
-const router = Router();
+const router: Router = Router();
 const controller = NewsletterController();
 
 router.post(
