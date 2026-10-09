@@ -154,6 +154,9 @@ export const auth = betterAuth({
     window: env.RATE_LIMIT_WINDOW,
     max: env.RATE_LIMIT_MAX_REQUESTS,
     storage: 'database',
+    customRules: {
+      '/get-session': false,
+    },
   },
 
   advanced: {

@@ -96,9 +96,6 @@ importers:
 
   apps/agency:
     dependencies:
-      '@mns/api':
-        specifier: workspace:*
-        version: link:../../packages/api
       '@mns/ui':
         specifier: workspace:*
         version: link:../../packages/ui
