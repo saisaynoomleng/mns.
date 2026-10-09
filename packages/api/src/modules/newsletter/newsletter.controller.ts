@@ -31,5 +31,14 @@ export const NewsletterController = () => {
         next(error);
       }
     },
+
+    getAllNewsletter: async (
+      req: Request,
+      res: Response,
+      next: NextFunction,
+    ) => {
+      try {
+      } catch (error) {}
+    },
   };
 };
